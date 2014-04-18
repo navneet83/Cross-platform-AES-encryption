@@ -14,11 +14,13 @@ import android.util.Base64;
 
 /*****************************************************************
  * CrossPlatform CryptLib
+ * 
  * <p>
  * This is a very basic cross platform implementation of AES encryption which is
  * not yet ready for production use. Idea is to make encryption work across
- * Android, iOS and C#. Security Issues: Key has to be salted (PBKDF2),
- * randomize IV
+ * Android, iOS and C# by using the same key/cipher mode/padding/IV on all platforms.<br/>
+ * Security Issues: Key has to be salted (PBKDF2),
+ * randomize IV <br/>
  * </p>
  * 
  * @since 1.0
