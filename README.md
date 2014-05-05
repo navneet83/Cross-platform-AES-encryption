@@ -11,6 +11,7 @@ Platforms Supported:
 3. Windows (C#).
 
 Features:
+
 1. Cross platform support. Encryption-Decryption works across C#, iOS and Android. 
 
 2. Support for Random IV (initialization vector) for encryption and decryption. Randomization is crucial for encryption schemes to achieve semantic security, a property whereby repeated usage of the scheme under the same key does not allow an attacker to infer relationships between segments of the encrypted message.
