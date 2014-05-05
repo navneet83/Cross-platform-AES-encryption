@@ -1,3 +1,19 @@
+	/*****************************************************************
+	 * CrossPlatform CryptLib
+	 * 
+	 * <p>
+	 * This cross platform CryptLib uses AES 256 for encryption. This library can
+	 * be used for encryptoion and de-cryption of string on iOS, Android and Windows
+	 * platform.<br/>
+	 * Features: <br/>
+	 * 1. 256 bit AES encryption
+	 * 2. Random IV generation. 
+	 * 3. Provision for SHA256 hashing of key. 
+	 * </p>
+	 * 
+	 * @since 1.0
+	 * @author navneet
+	 *****************************************************************/
 // How to use :
 // //  1. Encryption:
 
