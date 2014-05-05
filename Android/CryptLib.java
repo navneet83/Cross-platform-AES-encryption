@@ -11,6 +11,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.security.SecureRandom;
 import android.util.Base64;
 
 /*****************************************************************
@@ -240,5 +241,30 @@ public class CryptLib {
 			InvalidAlgorithmParameterException, IllegalBlockSizeException,
 			BadPaddingException {
 		return encryptDecrypt(_encryptedText, _key, EncryptMode.DECRYPT, _iv);
+	}
+	
+	/**
+ 	* this function generates random string for given length
+ 	* @param length
+ 	* 				Desired length
+ 	* * @return 
+ 	*/
+	public static String generateRandomIV(int length)
+	{
+		SecureRandom ranGen = new SecureRandom();
+		byte[] aesKey = new byte[16];
+		ranGen.nextBytes(aesKey);
+		StringBuffer result = new StringBuffer();
+	    for (byte b : aesKey) {
+	        result.append(String.format("%02x", b)); //convert to hex
+	    }
+	    if(length> result.toString().length())
+	    {
+	    	return result.toString();
+	    }
+	    else
+	    {
+	    	return result.toString().substring(0, length);
+	    }
 	}
 }
