@@ -15,6 +15,7 @@ import android.util.Base64;
 
 /*****************************************************************
  * CrossPlatform CryptLib
+ * note that it is important to hash the key before using it for encryption. Use SHA-256 function below.
  *****************************************************************/
 public class CryptLib {
 
