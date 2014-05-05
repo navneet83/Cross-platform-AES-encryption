@@ -3,6 +3,7 @@ package com.pakhee.common;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -14,17 +15,6 @@ import android.util.Base64;
 
 /*****************************************************************
  * CrossPlatform CryptLib
- * 
- * <p>
- * This is a very basic cross platform implementation of AES encryption which is
- * not yet ready for production use. Idea is to make encryption work across
- * Android, iOS and C# by using the same key/cipher mode/padding/IV on all platforms.<br/>
- * Security Issues: Key has to be salted (PBKDF2),
- * randomize IV <br/>
- * </p>
- * 
- * @since 1.0
- * @author navneet
  *****************************************************************/
 public class CryptLib {
 
@@ -38,15 +28,47 @@ public class CryptLib {
 	// cipher to be used for encryption and decryption
 	Cipher _cx;
 
-	// encryption key
-	byte[] _key;
+	// encryption key and initialization vector
+	byte[] _key, _iv;
 
 	public CryptLib() throws NoSuchAlgorithmException, NoSuchPaddingException {
 		// initialize the cipher with transformation AES/CBC/PKCS5Padding
 		_cx = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		_key = new byte[16];
+		_key = new byte[32]; //256 bit key space
+		_iv = new byte[16]; //128 bit IV
 	}
+	
+	/**
+	 * Note: This function is no longer used. 
+	 * This function generates md5 hash of the input string
+	 * @param inputString
+	 * @return md5 hash of the input string
+	 */
+	public static final String md5(final String inputString) {
+	    final String MD5 = "MD5";
+	    try {
+	        // Create MD5 Hash
+	        MessageDigest digest = java.security.MessageDigest
+	                .getInstance(MD5);
+	        digest.update(s.getBytes());
+	        byte messageDigest[] = digest.digest();
 
+	        // Create Hex String
+	        StringBuilder hexString = new StringBuilder();
+	        for (byte aMessageDigest : messageDigest) {
+	            String h = Integer.toHexString(0xFF & aMessageDigest);
+	            while (h.length() < 2)
+	                h = "0" + h;
+	            hexString.append(h);
+	        }
+	        return hexString.toString();
+
+	    } catch (NoSuchAlgorithmException e) {
+	        e.printStackTrace();
+	    }
+	    return "";
+	}
+	
 	/**
 	 * 
 	 * @param _inputText
@@ -55,6 +77,8 @@ public class CryptLib {
 	 *            Encryption key to used for encryption / decryption
 	 * @param _mode
 	 *            specify the mode encryption / decryption
+	 * @param _initVector
+	 * 	      Initialization vector
 	 * @return encrypted or decrypted string based on the mode
 	 * @throws UnsupportedEncodingException
 	 * @throws InvalidKeyException
@@ -62,16 +86,30 @@ public class CryptLib {
 	 * @throws IllegalBlockSizeException
 	 * @throws BadPaddingException
 	 */
-	private String encryptDecrypt(String _inputText, String _encryptionKey,
-			EncryptMode _mode) throws UnsupportedEncodingException,
+	 	private String encryptDecrypt(String _inputText, String _encryptionKey,
+			EncryptMode _mode, String _initVector) throws UnsupportedEncodingException,
 			InvalidKeyException, InvalidAlgorithmParameterException,
 			IllegalBlockSizeException, BadPaddingException {
 		String _out = "";// output string
+		//_encryptionKey = md5(_encryptionKey);
+		//System.out.println("key="+_encryptionKey);
+		
 		int len = _encryptionKey.getBytes("UTF-8").length; // length of the key
 															// provided
+		
 		if (_encryptionKey.getBytes("UTF-8").length > _key.length)
 			len = _key.length;
+		
+		int ivlen = _initVector.getBytes("UTF-8").length;
+		
+		if(_initVector.getBytes("UTF-8").length > _iv.length)
+			ivlen = _iv.length;
+		
 		System.arraycopy(_encryptionKey.getBytes("UTF-8"), 0, _key, 0, len);
+		System.arraycopy(_initVector.getBytes("UTF-8"), 0, _iv, 0, ivlen);
+		//KeyGenerator _keyGen = KeyGenerator.getInstance("AES");
+		//_keyGen.init(128);
+
 		SecretKeySpec keySpec = new SecretKeySpec(_key, "AES"); // Create a new
 																// SecretKeySpec
 																// for the
@@ -79,7 +117,8 @@ public class CryptLib {
 																// data and
 																// algorithm
 																// name.
-		IvParameterSpec ivSpec = new IvParameterSpec(_key); // Create a new
+		
+		IvParameterSpec ivSpec = new IvParameterSpec(_iv); // Create a new
 															// IvParameterSpec
 															// instance with the
 															// bytes from the
@@ -116,9 +155,45 @@ public class CryptLib {
 																// (decryption)
 			_out = new String(decryptedVal);
 		}
+		System.out.println(_out);
 		return _out; // return encrypted/decrypted string
 	}
 
+	/***
+	 * This function computes the SHA256 hash of input string
+	 * @param text input text whose SHA256 hash has to be computed
+	 * @param length length of the text to be returned
+	 * @return returns SHA256 hash of input text 
+	 * @throws NoSuchAlgorithmException
+	 * @throws UnsupportedEncodingException
+	 */
+	public static String SHA256 (String text, int length) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+	    String resultStr;
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+	    md.update(text.getBytes("UTF-8"));
+	    byte[] digest = md.digest();
+	    
+	    StringBuffer result = new StringBuffer();
+	    for (byte b : digest) {
+	        result.append(String.format("%02x", b)); //convert to hex
+	    }
+	    //return result.toString();
+	    
+	    if(length > result.toString().length())
+	    {
+	    	resultStr = result.toString();
+	    }
+	    else 
+	    {
+	    	resultStr = result.toString().substring(0, length);
+	    }
+
+	    return resultStr;
+	    
+	}
+	
 	/***
 	 * This function encrypts the plain text to cipher text using the key
 	 * provided. You'll have to use the same key for decryption
@@ -127,6 +202,8 @@ public class CryptLib {
 	 *            Plain text to be encrypted
 	 * @param _key
 	 *            Encryption Key. You'll have to use the same key for decryption
+	 * @param _iv
+	 * 	    initialization Vector
 	 * @return returns encrypted (cipher) text
 	 * @throws InvalidKeyException
 	 * @throws UnsupportedEncodingException
@@ -134,13 +211,14 @@ public class CryptLib {
 	 * @throws IllegalBlockSizeException
 	 * @throws BadPaddingException
 	 */
-	public String encrypt(String _plainText, String _key)
+	 
+	public String encrypt(String _plainText, String _key, String _iv)
 			throws InvalidKeyException, UnsupportedEncodingException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException,
 			BadPaddingException {
-		return encryptDecrypt(_plainText, _key, EncryptMode.ENCRYPT);
+		return encryptDecrypt(_plainText, _key, EncryptMode.ENCRYPT, _iv);
 	}
-
+	
 	/***
 	 * This funtion decrypts the encrypted text to plain text using the key
 	 * provided. You'll have to use the same key which you used during
@@ -150,6 +228,8 @@ public class CryptLib {
 	 *            Encrypted/Cipher text to be decrypted
 	 * @param _key
 	 *            Encryption key which you used during encryption
+	 * @param _iv
+	 * 	    initialization Vector
 	 * @return encrypted value
 	 * @throws InvalidKeyException
 	 * @throws UnsupportedEncodingException
@@ -157,10 +237,10 @@ public class CryptLib {
 	 * @throws IllegalBlockSizeException
 	 * @throws BadPaddingException
 	 */
-	public String decrypt(String _encryptedText, String _key)
+	public String decrypt(String _encryptedText, String _key, String _iv)
 			throws InvalidKeyException, UnsupportedEncodingException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException,
 			BadPaddingException {
-		return encryptDecrypt(_encryptedText, _key, EncryptMode.DECRYPT);
+		return encryptDecrypt(_encryptedText, _key, EncryptMode.DECRYPT, _iv);
 	}
 }
