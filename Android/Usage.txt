@@ -1,0 +1,16 @@
+//This is how to use CryptLib.java
+
+	   try {
+	    	CryptLib _crypt = new CryptLib();
+	    	String output= "";
+	    	String plainText = "This is the text to be encrypted.";
+	    	String key = CryptLib.SHA256("my secret key", 31); //hash the key using SHA256. Use only first 31 characters for cross platform support.
+	    	String iv = CryptLib.generateRandomIV(15); //do not exceed 15 characters
+	    	output = _crypt.encrypt(plainText, key, iv); //encrypt
+	    	System.out.println("encrypted text=" + output);
+	    	output = _crypt.decrypt(output, key,iv); //decrypt
+	    	System.out.println("decrypted text=" + output);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
