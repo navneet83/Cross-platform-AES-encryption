@@ -14,10 +14,23 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 import android.util.Base64;
 
-/*****************************************************************
- * CrossPlatform CryptLib
- * note that it is important to hash the key before using it for encryption. Use SHA-256 function below.
- *****************************************************************/
+	/*****************************************************************
+	 * CrossPlatform CryptLib
+	 * 
+	 * <p>
+	 * This cross platform CryptLib uses AES 256 for encryption. This library can
+	 * be used for encryptoion and de-cryption of string on iOS, Android and Windows
+	 * platform.<br/>
+	 * Features: <br/>
+	 * 1. 256 bit AES encryption
+	 * 2. Random IV generation. 
+	 * 3. Provision for SHA256 hashing of key. 
+	 * </p>
+	 * 
+	 * @since 1.0
+	 * @author navneet
+	 *****************************************************************/
+	 
 public class CryptLib {
 
 	/**
