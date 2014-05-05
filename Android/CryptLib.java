@@ -94,8 +94,7 @@ public class CryptLib {
 		//_encryptionKey = md5(_encryptionKey);
 		//System.out.println("key="+_encryptionKey);
 		
-		int len = _encryptionKey.getBytes("UTF-8").length; // length of the key
-															// provided
+		int len = _encryptionKey.getBytes("UTF-8").length; // length of the key	provided
 		
 		if (_encryptionKey.getBytes("UTF-8").length > _key.length)
 			len = _key.length;
@@ -110,22 +109,21 @@ public class CryptLib {
 		//KeyGenerator _keyGen = KeyGenerator.getInstance("AES");
 		//_keyGen.init(128);
 
-		SecretKeySpec keySpec = new SecretKeySpec(_key, "AES"); // Create a new
-																// SecretKeySpec
-																// for the
-																// specified key
-																// data and
-																// algorithm
-																// name.
+		SecretKeySpec keySpec = new SecretKeySpec(_key, "AES"); // Create a new SecretKeySpec
+									// for the
+									// specified key
+									// data and
+									// algorithm
+									// name.
 		
 		IvParameterSpec ivSpec = new IvParameterSpec(_iv); // Create a new
-															// IvParameterSpec
-															// instance with the
-															// bytes from the
-															// specified buffer
-															// iv used as
-															// initialization
-															// vector.
+								// IvParameterSpec
+								// instance with the
+								// bytes from the
+								// specified buffer
+								// iv used as
+								// initialization
+								// vector.
 
 		// encryption
 		if (_mode.equals(EncryptMode.ENCRYPT)) {
@@ -133,26 +131,25 @@ public class CryptLib {
 			// Read
 			// https://android-developers.blogspot.com/2013/08/some-securerandom-thoughts.html
 			// for more info.
-			_cx.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);// Initialize this
-															// cipher instance
+			_cx.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);// Initialize this cipher instance
 			byte[] results = _cx.doFinal(_inputText.getBytes("UTF-8")); // Finish
-																		// multi-part
-																		// transformation
-																		// (encryption)
+										// multi-part
+										// transformation
+										// (encryption)
 			_out = Base64.encodeToString(results, Base64.DEFAULT); // ciphertext
-																	// output
+										// output
 		}
 
 		// decryption
 		if (_mode.equals(EncryptMode.DECRYPT)) {
-			_cx.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);// Initialize this
-															// cipher instance
+			_cx.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);// Initialize this ipher instance
+			
 			byte[] decodedValue = Base64.decode(_inputText.getBytes(),
 					Base64.DEFAULT);
 			byte[] decryptedVal = _cx.doFinal(decodedValue); // Finish
-																// multi-part
-																// transformation
-																// (decryption)
+									// multi-part
+									// transformation
+									// (decryption)
 			_out = new String(decryptedVal);
 		}
 		System.out.println(_out);
