@@ -21,9 +21,9 @@
 
 // NSString * _key = @"shared secret"; //secret key for encryption. To make encryption stronger, we will not use this key directly. We'll first hash the key next step and then use it.
 
-// key = [[StringEncryption alloc] sha256:key length:31]; //this is very important, do not exceed length > 31
+// key = [[StringEncryption alloc] sha256:key length:32]; //this is very important, 32 bytes = 256 bit
 
-// NSString * iv =   [[[[StringEncryption alloc] generateRandomIV:11]  base64EncodingWithLineLength:0] substringToIndex:15]; //Here we are generating random initialization vector (iv). Length of this vector should not exceed 15 characters. 
+// NSString * iv =   [[[[StringEncryption alloc] generateRandomIV:11]  base64EncodingWithLineLength:0] substringToIndex:16]; //Here we are generating random initialization vector (iv). Length of this vector = 16 bytes = 128 bits
 
 // Now that we have input text, hashed key and random IV, we are all set for encryption:
 // NSData * encryptedData = [[StringEncryption alloc] encrypt:[secret dataUsingEncoding:NSUTF8StringEncoding] key:key iv:iv];
@@ -48,8 +48,8 @@
 @implementation StringEncryption
 
 - (NSData *)encrypt:(NSData *)plainText key:(NSString *)key  iv:(NSString *)iv {
-    char keyPointer[kCCKeySizeAES256+1],// room for terminator (unused) ref: https://devforums.apple.com/message/876053#876053
-    ivPointer[kCCBlockSizeAES128];
+    char keyPointer[kCCKeySizeAES256+2],// room for terminator (unused) ref: https://devforums.apple.com/message/876053#876053
+    ivPointer[kCCBlockSizeAES128+2];
     BOOL patchNeeded;
     bzero(keyPointer, sizeof(keyPointer)); // fill with zeroes for padding
     //key = [[StringEncryption alloc] md5:key];
@@ -97,8 +97,8 @@
 
 
 -(NSData *)decrypt:(NSData *)encryptedText key:(NSString *)key iv:(NSString *)iv {
-    char keyPointer[kCCKeySizeAES256+1],// room for terminator (unused) ref: https://devforums.apple.com/message/876053#876053
-    ivPointer[kCCBlockSizeAES128];
+    char keyPointer[kCCKeySizeAES256+2],// room for terminator (unused) ref: https://devforums.apple.com/message/876053#876053
+    ivPointer[kCCBlockSizeAES128+2];
     BOOL patchNeeded;
   
     patchNeeded = ([key length] > kCCKeySizeAES256+1);
