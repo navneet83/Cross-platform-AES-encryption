@@ -4,8 +4,8 @@
 	    	CryptLib _crypt = new CryptLib();
 	    	String output= "";
 	    	String plainText = "This is the text to be encrypted.";
-	    	String key = CryptLib.SHA256("my secret key", 31); //hash the key using SHA256. Use only first 31 characters for cross platform support.
-	    	String iv = CryptLib.generateRandomIV(15); //do not exceed 15 characters
+	    	String key = CryptLib.SHA256("my secret key", 32); //32 bytes = 256 bit
+	    	String iv = CryptLib.generateRandomIV(16); //16 bytes = 128 bit
 	    	output = _crypt.encrypt(plainText, key, iv); //encrypt
 	    	System.out.println("encrypted text=" + output);
 	    	output = _crypt.decrypt(output, key,iv); //decrypt
