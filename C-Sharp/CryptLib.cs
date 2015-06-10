@@ -53,7 +53,7 @@ namespace com.pakhee.common
 			byte[] randomBytes = new byte[length];
 
 			using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider()) {
-				rng.GetBytes(randomBytes);
+				rng.GetBytes(randomBytes); //Fills an array of bytes with a cryptographically strong sequence of random values. 
 			}
 
 			for (int i = 0; i < _iv.Length; i++) {
