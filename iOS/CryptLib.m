@@ -41,7 +41,7 @@
 // For base64EncodingWithLineLength refer - https://github.com/jdg/MGTwitterEngine/blob/master/NSData%2BBase64.m
 
 
-#import "StringEncryption.h"
+#import "CryptLib.h"
 #import "NSData+Base64.h"
 
 
