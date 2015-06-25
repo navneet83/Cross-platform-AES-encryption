@@ -14,3 +14,4 @@
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+If you are getting "java.security.InvalidKeyException: Illegal key size" error while compiling, see this - http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters
