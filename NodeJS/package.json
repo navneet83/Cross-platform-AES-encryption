@@ -1,0 +1,67 @@
+{
+  "name": "Cross-platform-AES-encryption",
+  "version": "0.0.1",
+  "author": {
+    "name": "invalidred"
+  },
+  "main": "index.js",
+  "description": "Encrypt and Decrypt Stuff using AES-Encryption",
+  "contributors": [
+    {
+      "name": "Abdul Khan",
+      "email": "invalidred@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --reporter spec test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:invalidred/Cross-platform-AES-encryption.git"
+  },
+  "keywords": [
+    "AES node",
+    "Cross Platform",
+    "Encryption",
+    "Decryption"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^5.2.17",
+    "chai": "^2.3.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-mocha": "^2.0.1",
+    "mocha": "^2.2.4"
+  },
+  "engine": "node >= 0.10.x",
+  "homepage": "https://github.com/invalidred/Cross-platform-AES-encryption",
+  "bugs": {
+    "url": "https://github.com/Pakhee/Cross-platform-AES-encryption/issues"
+  },
+  "private": false,
+  "license": "MIT",
+  "gitHead": "a4986e041db5b6e26019deb7e522d6fdcddcc59a",
+  "_id": "babel-npm-module-example@0.0.2",
+  "_shasum": "79e930a8a24f446ffcca99026577d43a660caf0f",
+  "_from": "babel-npm-module-example@*",
+  "_npmVersion": "2.5.1",
+  "_nodeVersion": "0.12.0",
+  "_npmUser": {
+    "name": "invalidred",
+    "email": "invalidred@gmail.com"
+  },
+  "dist": {
+    "shasum": "79e930a8a24f446ffcca99026577d43a660caf0f",
+    "tarball": "http://registry.npmjs.org/babel-npm-module-example/-/babel-npm-module-example-0.0.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "invalidred",
+      "email": "invalidred@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/babel-npm-module-example/-/babel-npm-module-example-0.0.2.tgz",
+  "readme": "ERROR: No README data found!"
+}
