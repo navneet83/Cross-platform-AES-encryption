@@ -2,229 +2,434 @@
 1 verbose cli [ '/usr/local/bin/iojs',
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'install',
-1 verbose cli   '-g',
-1 verbose cli   'gulp' ]
+1 verbose cli   'node-rijndael',
+1 verbose cli   '--save' ]
 2 info using npm@2.11.3
 3 info using node@v2.3.3
-4 verbose install initial load of /usr/local/lib/package.json
-5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
-6 silly cache add args [ 'gulp', null ]
-7 verbose cache add spec gulp
-8 silly cache add parsed spec { raw: 'gulp',
-8 silly cache add   scope: null,
-8 silly cache add   name: 'gulp',
-8 silly cache add   rawSpec: '',
-8 silly cache add   spec: '*',
-8 silly cache add   type: 'range' }
-9 silly addNamed gulp@*
-10 verbose addNamed "*" is a valid semver range for gulp
-11 silly addNameRange { name: 'gulp', range: '*', hasData: false }
-12 silly mapToRegistry name gulp
-13 silly mapToRegistry using default registry
-14 silly mapToRegistry registry https://registry.npmjs.org/
-15 silly mapToRegistry uri https://registry.npmjs.org/gulp
-16 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
-17 verbose request uri https://registry.npmjs.org/gulp
-18 verbose request no auth needed
-19 info attempt registry request try #1 at 10:39:04
-20 verbose request id 89c8eb7fef187f8f
-21 verbose etag "8JD4WXRK7WZM7XT1U84LK0G3O"
-22 http request GET https://registry.npmjs.org/gulp
-23 http 304 https://registry.npmjs.org/gulp
-24 silly get cb [ 304,
-24 silly get   { date: 'Sun, 12 Jul 2015 14:39:05 GMT',
-24 silly get     via: '1.1 varnish',
-24 silly get     'cache-control': 'max-age=60',
-24 silly get     etag: '"8JD4WXRK7WZM7XT1U84LK0G3O"',
-24 silly get     age: '6',
-24 silly get     connection: 'keep-alive',
-24 silly get     'x-served-by': 'cache-ord1720-ORD',
-24 silly get     'x-cache': 'HIT',
-24 silly get     'x-cache-hits': '36',
-24 silly get     'x-timer': 'S1436711945.268774,VS0,VE0',
-24 silly get     vary: 'Accept' } ]
-25 verbose etag https://registry.npmjs.org/gulp from cache
-26 verbose get saving gulp to /Users/abdulkhan/.npm/registry.npmjs.org/gulp/.cache.json
-27 silly addNameRange number 2 { name: 'gulp', range: '*', hasData: true }
-28 silly addNameRange versions [ 'gulp',
-28 silly addNameRange   [ '0.0.1',
-28 silly addNameRange     '0.0.2',
-28 silly addNameRange     '0.0.3',
-28 silly addNameRange     '0.0.4',
-28 silly addNameRange     '0.0.5',
-28 silly addNameRange     '0.0.7',
-28 silly addNameRange     '0.0.8',
-28 silly addNameRange     '0.0.9',
-28 silly addNameRange     '0.1.0',
-28 silly addNameRange     '0.2.0',
-28 silly addNameRange     '1.0.0',
-28 silly addNameRange     '1.1.0',
-28 silly addNameRange     '1.2.0',
-28 silly addNameRange     '1.2.1',
-28 silly addNameRange     '2.0.0',
-28 silly addNameRange     '2.0.1',
-28 silly addNameRange     '2.1.0',
-28 silly addNameRange     '2.2.0',
-28 silly addNameRange     '2.3.0',
-28 silly addNameRange     '2.4.0',
-28 silly addNameRange     '2.4.1',
-28 silly addNameRange     '2.6.0',
-28 silly addNameRange     '2.6.1',
-28 silly addNameRange     '2.7.0',
-28 silly addNameRange     '3.0.0',
-28 silly addNameRange     '3.1.1',
-28 silly addNameRange     '3.1.2',
-28 silly addNameRange     '3.1.3',
-28 silly addNameRange     '3.1.4',
-28 silly addNameRange     '3.2.0',
-28 silly addNameRange     '3.2.1',
-28 silly addNameRange     '3.2.2',
-28 silly addNameRange     '3.2.3',
-28 silly addNameRange     '3.2.4',
-28 silly addNameRange     '3.2.5',
-28 silly addNameRange     '3.3.0',
-28 silly addNameRange     '3.3.1',
-28 silly addNameRange     '3.3.2',
-28 silly addNameRange     '3.3.4',
-28 silly addNameRange     '3.4.0',
-28 silly addNameRange     '3.5.0',
-28 silly addNameRange     '3.5.1',
-28 silly addNameRange     '3.5.2',
-28 silly addNameRange     '3.5.5',
-28 silly addNameRange     '3.5.6',
-28 silly addNameRange     '3.6.0',
-28 silly addNameRange     '3.6.1',
-28 silly addNameRange     '3.6.2',
-28 silly addNameRange     '3.7.0',
-28 silly addNameRange     '3.8.0',
-28 silly addNameRange     '3.8.1',
-28 silly addNameRange     '3.8.2',
-28 silly addNameRange     '3.8.3',
-28 silly addNameRange     '3.8.4',
-28 silly addNameRange     '3.8.5',
-28 silly addNameRange     '3.8.6',
-28 silly addNameRange     '3.8.7',
-28 silly addNameRange     '3.8.8',
-28 silly addNameRange     '3.8.9',
-28 silly addNameRange     '3.8.10',
-28 silly addNameRange     '3.8.11',
-28 silly addNameRange     '3.9.0' ] ]
-29 silly addNamed gulp@3.9.0
-30 verbose addNamed "3.9.0" is a plain semver version for gulp
-31 silly cache afterAdd gulp@3.9.0
-32 verbose afterAdd /Users/abdulkhan/.npm/gulp/3.9.0/package/package.json not in flight; writing
-33 verbose afterAdd /Users/abdulkhan/.npm/gulp/3.9.0/package/package.json written
-34 silly install resolved [ { name: 'gulp',
-34 silly install resolved     description: 'The streaming build system',
-34 silly install resolved     version: '3.9.0',
-34 silly install resolved     homepage: 'http://gulpjs.com',
-34 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/gulpjs/gulp.git' },
-34 silly install resolved     author:
-34 silly install resolved      { name: 'Fractal',
-34 silly install resolved        email: 'contact@wearefractal.com',
-34 silly install resolved        url: 'http://wearefractal.com/' },
-34 silly install resolved     tags: [ 'build', 'stream', 'system', 'make', 'tool', 'asset', 'pipeline' ],
-34 silly install resolved     files: [ 'index.js', 'lib', 'bin', 'completion' ],
-34 silly install resolved     bin: { gulp: './bin/gulp.js' },
-34 silly install resolved     man: [ 'gulp.1' ],
-34 silly install resolved     dependencies:
-34 silly install resolved      { archy: '^1.0.0',
-34 silly install resolved        chalk: '^1.0.0',
-34 silly install resolved        deprecated: '^0.0.1',
-34 silly install resolved        'gulp-util': '^3.0.0',
-34 silly install resolved        interpret: '^0.6.2',
-34 silly install resolved        liftoff: '^2.1.0',
-34 silly install resolved        minimist: '^1.1.0',
-34 silly install resolved        orchestrator: '^0.3.0',
-34 silly install resolved        'pretty-hrtime': '^1.0.0',
-34 silly install resolved        semver: '^4.1.0',
-34 silly install resolved        tildify: '^1.0.0',
-34 silly install resolved        v8flags: '^2.0.2',
-34 silly install resolved        'vinyl-fs': '^0.3.0' },
-34 silly install resolved     devDependencies:
-34 silly install resolved      { coveralls: '^2.7.0',
-34 silly install resolved        'graceful-fs': '^3.0.0',
-34 silly install resolved        istanbul: '^0.3.0',
-34 silly install resolved        jscs: '~1.12.0',
-34 silly install resolved        jshint: '^2.5.0',
-34 silly install resolved        'jshint-stylish': '^1.0.0',
-34 silly install resolved        'marked-man': '^0.1.3',
-34 silly install resolved        mkdirp: '^0.5.0',
-34 silly install resolved        mocha: '^2.0.1',
-34 silly install resolved        'mocha-lcov-reporter': '^0.0.1',
-34 silly install resolved        q: '^1.0.0',
-34 silly install resolved        rimraf: '^2.2.5',
-34 silly install resolved        should: '^5.0.1' },
-34 silly install resolved     scripts:
-34 silly install resolved      { prepublish: 'marked-man --name gulp docs/CLI.md > gulp.1',
-34 silly install resolved        lint: 'jshint lib bin test index.js --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules && jscs lib bin test index.js',
-34 silly install resolved        test: 'npm run-script lint && mocha --reporter spec',
-34 silly install resolved        coveralls: 'istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage' },
-34 silly install resolved     engines: { node: '>= 0.9' },
-34 silly install resolved     license: 'MIT',
-34 silly install resolved     gitHead: '657213a52d5e9c19b85df6a42f76341a98c08ae8',
-34 silly install resolved     bugs: { url: 'https://github.com/gulpjs/gulp/issues' },
-34 silly install resolved     _id: 'gulp@3.9.0',
-34 silly install resolved     _shasum: 'cf1fba4cb558bb8c6ae6c9613f583ae2620d214a',
-34 silly install resolved     _from: 'gulp@*',
-34 silly install resolved     _npmVersion: '2.8.3',
-34 silly install resolved     _nodeVersion: '0.10.36',
-34 silly install resolved     _npmUser: { name: 'phated', email: 'blaine@iceddev.com' },
-34 silly install resolved     maintainers: [ [Object], [Object] ],
-34 silly install resolved     dist:
-34 silly install resolved      { shasum: 'cf1fba4cb558bb8c6ae6c9613f583ae2620d214a',
-34 silly install resolved        tarball: 'http://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz' },
-34 silly install resolved     directories: {},
-34 silly install resolved     _resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz',
-34 silly install resolved     readme: 'ERROR: No README data found!' } ]
-35 info install gulp@3.9.0 into /usr/local/lib
-36 info installOne gulp@3.9.0
-37 verbose installOne of gulp to /usr/local/lib not in flight; installing
-38 verbose lock using /Users/abdulkhan/.npm/_locks/gulp-709d00e5d169ceb3.lock for /usr/local/lib/node_modules/gulp
-39 silly install write writing gulp 3.9.0 to /usr/local/lib/node_modules/gulp
-40 verbose unbuild lib/node_modules/gulp
-41 silly gentlyRm /usr/local/lib/node_modules/gulp is being purged from base /usr/local
-42 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/gulp
-43 verbose tar unpack /Users/abdulkhan/.npm/gulp/3.9.0/package.tgz
-44 verbose tar unpacking to /usr/local/lib/node_modules/gulp
-45 silly gentlyRm /usr/local/lib/node_modules/gulp is being purged
-46 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/gulp
-47 silly gunzTarPerm modes [ '755', '644' ]
-48 error tar.unpack untar error /Users/abdulkhan/.npm/gulp/3.9.0/package.tgz
-49 verbose unlock done using /Users/abdulkhan/.npm/_locks/gulp-709d00e5d169ceb3.lock for /usr/local/lib/node_modules/gulp
-50 verbose fstream_path /usr/local/lib/node_modules/gulp
-51 verbose fstream_type Directory
-52 verbose fstream_class DirWriter
-53 verbose stack Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/gulp'
-53 verbose stack     at Error (native)
-54 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25
-54 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53
-54 verbose fstream_stack FSReqWrap.oncomplete (fs.js:82:15)
-55 verbose cwd /Users/abdulkhan/Development/github/babel-npm-module-example
-56 error Darwin 14.4.0
-57 error argv "/usr/local/bin/iojs" "/usr/local/bin/npm" "install" "-g" "gulp"
-58 error node v2.3.3
-59 error npm  v2.11.3
-60 error path /usr/local/lib/node_modules/gulp
-61 error code EACCES
-62 error errno -13
-63 error syscall mkdir
-64 error Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/gulp'
-64 error     at Error (native)
-64 error  { [Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/gulp']
-64 error   errno: -13,
-64 error   code: 'EACCES',
-64 error   syscall: 'mkdir',
-64 error   path: '/usr/local/lib/node_modules/gulp',
-64 error   fstream_type: 'Directory',
-64 error   fstream_path: '/usr/local/lib/node_modules/gulp',
-64 error   fstream_class: 'DirWriter',
-64 error   fstream_stack:
-64 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25',
-64 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53',
-64 error      'FSReqWrap.oncomplete (fs.js:82:15)' ] }
-65 error Please try running this command again as root/Administrator.
-66 verbose exit [ -13, true ]
-67 verbose unbuild lib/node_modules/gulp
-68 silly gentlyRm /usr/local/lib/node_modules/gulp is being purged from base /usr/local
-69 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/gulp
+4 verbose install initial load of /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/package.json
+5 verbose installManyTop reading scoped package data from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/babel/package.json
+6 verbose installManyTop reading scoped package data from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/chai/package.json
+7 verbose installManyTop reading scoped package data from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/gulp/package.json
+8 verbose installManyTop reading scoped package data from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/gulp-babel/package.json
+9 verbose installManyTop reading scoped package data from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/gulp-mocha/package.json
+10 verbose installManyTop reading scoped package data from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/mocha/package.json
+11 verbose readDependencies loading dependencies from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/package.json
+12 silly cache add args [ 'node-rijndael', null ]
+13 verbose cache add spec node-rijndael
+14 silly cache add parsed spec { raw: 'node-rijndael',
+14 silly cache add   scope: null,
+14 silly cache add   name: 'node-rijndael',
+14 silly cache add   rawSpec: '',
+14 silly cache add   spec: '*',
+14 silly cache add   type: 'range' }
+15 silly addNamed node-rijndael@*
+16 verbose addNamed "*" is a valid semver range for node-rijndael
+17 silly addNameRange { name: 'node-rijndael', range: '*', hasData: false }
+18 silly mapToRegistry name node-rijndael
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry uri https://registry.npmjs.org/node-rijndael
+22 verbose addNameRange registry:https://registry.npmjs.org/node-rijndael not in flight; fetching
+23 verbose request uri https://registry.npmjs.org/node-rijndael
+24 verbose request no auth needed
+25 info attempt registry request try #1 at 22:10:11
+26 verbose request id be85d09a979c6d25
+27 verbose etag "A695727MUXZFE6PQ2DQAH1574"
+28 http request GET https://registry.npmjs.org/node-rijndael
+29 http 304 https://registry.npmjs.org/node-rijndael
+30 silly get cb [ 304,
+30 silly get   { date: 'Tue, 14 Jul 2015 02:10:11 GMT',
+30 silly get     via: '1.1 varnish',
+30 silly get     'cache-control': 'max-age=60',
+30 silly get     etag: '"A695727MUXZFE6PQ2DQAH1574"',
+30 silly get     age: '25',
+30 silly get     connection: 'keep-alive',
+30 silly get     'x-served-by': 'cache-ord1722-ORD',
+30 silly get     'x-cache': 'HIT',
+30 silly get     'x-cache-hits': '1',
+30 silly get     'x-timer': 'S1436839811.728282,VS0,VE0',
+30 silly get     vary: 'Accept' } ]
+31 verbose etag https://registry.npmjs.org/node-rijndael from cache
+32 verbose get saving node-rijndael to /Users/abdulkhan/.npm/registry.npmjs.org/node-rijndael/.cache.json
+33 silly addNameRange number 2 { name: 'node-rijndael', range: '*', hasData: true }
+34 silly addNameRange versions [ 'node-rijndael',
+34 silly addNameRange   [ '0.0.1', '0.0.2', '0.0.2-1', '0.2.0', '0.2.1', '0.2.2' ] ]
+35 silly addNamed node-rijndael@0.2.2
+36 verbose addNamed "0.2.2" is a plain semver version for node-rijndael
+37 silly cache afterAdd node-rijndael@0.2.2
+38 verbose afterAdd /Users/abdulkhan/.npm/node-rijndael/0.2.2/package/package.json not in flight; writing
+39 verbose afterAdd /Users/abdulkhan/.npm/node-rijndael/0.2.2/package/package.json written
+40 silly install resolved [ { name: 'node-rijndael',
+40 silly install resolved     version: '0.2.2',
+40 silly install resolved     author: { name: 'Eli Skeggs', email: 'skeggse@gmail.com' },
+40 silly install resolved     description: 'A native binding to mcrypt\'s rijndael encryption.',
+40 silly install resolved     main: './index',
+40 silly install resolved     scripts: { test: 'mocha', install: 'node-gyp rebuild' },
+40 silly install resolved     repository:
+40 silly install resolved      { type: 'git',
+40 silly install resolved        url: 'git+https://github.com/skeggse/node-rijndael.git' },
+40 silly install resolved     homepage: 'https://github.com/skeggse/node-rijndael',
+40 silly install resolved     bugs: { url: 'https://github.com/skeggse/node-rijndael/issues' },
+40 silly install resolved     keywords:
+40 silly install resolved      [ 'rijndael',
+40 silly install resolved        'aes',
+40 silly install resolved        'mcrypt',
+40 silly install resolved        'crypto',
+40 silly install resolved        'cryptography',
+40 silly install resolved        'php',
+40 silly install resolved        'compat',
+40 silly install resolved        'compatibility' ],
+40 silly install resolved     dependencies: { nan: '~1.5.0' },
+40 silly install resolved     devDependencies: { chai: '^1.9.1', mocha: '~1.12.0' },
+40 silly install resolved     licenses: [ [Object] ],
+40 silly install resolved     engines: { node: '>=0.3.0' },
+40 silly install resolved     gypfile: true,
+40 silly install resolved     gitHead: 'ea5331de96d419844d343dd99bd8184e02f7486e',
+40 silly install resolved     _id: 'node-rijndael@0.2.2',
+40 silly install resolved     _shasum: 'bdf8ff9658df9dd06c0b44a710a98939b4728d51',
+40 silly install resolved     _from: 'node-rijndael@*',
+40 silly install resolved     _npmVersion: '1.4.23',
+40 silly install resolved     _npmUser: { name: 'skeggse', email: 'skeggse@gmail.com' },
+40 silly install resolved     maintainers: [ [Object] ],
+40 silly install resolved     dist:
+40 silly install resolved      { shasum: 'bdf8ff9658df9dd06c0b44a710a98939b4728d51',
+40 silly install resolved        tarball: 'http://registry.npmjs.org/node-rijndael/-/node-rijndael-0.2.2.tgz' },
+40 silly install resolved     directories: {},
+40 silly install resolved     _resolved: 'https://registry.npmjs.org/node-rijndael/-/node-rijndael-0.2.2.tgz',
+40 silly install resolved     readme: 'ERROR: No README data found!' } ]
+41 info install node-rijndael@0.2.2 into /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS
+42 info installOne node-rijndael@0.2.2
+43 verbose installOne of node-rijndael to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS not in flight; installing
+44 verbose lock using /Users/abdulkhan/.npm/_locks/node-rijndael-5ea1a44ea4d3a22e.lock for /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+45 silly install write writing node-rijndael 0.2.2 to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+46 verbose unbuild node_modules/node-rijndael
+47 silly gentlyRm /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael is being purged from base /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS
+48 verbose gentlyRm don't care about contents; nuking /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+49 verbose tar unpack /Users/abdulkhan/.npm/node-rijndael/0.2.2/package.tgz
+50 verbose tar unpacking to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+51 silly gentlyRm /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael is being purged
+52 verbose gentlyRm don't care about contents; nuking /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+53 silly gunzTarPerm modes [ '755', '644' ]
+54 silly gunzTarPerm extractEntry package.json
+55 silly gunzTarPerm extractEntry .npmignore
+56 silly gunzTarPerm extractEntry README.md
+57 silly gunzTarPerm extractEntry index.js
+58 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/aes_test.d
+59 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/cipher_test.d
+60 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/aes_test/src/aes_test.o.d
+61 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/cipher_test/src/cipher_test.o.d
+62 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/libmcrypt.a.d
+63 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/bzero.o.d
+64 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/mcrypt.o.d
+65 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/mcrypt_extra.o.d
+66 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/mcrypt_modules.o.d
+67 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/mcrypt_symb.o.d
+68 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/mcrypt_threads.o.d
+69 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/win32_comp.o.d
+70 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/lib/xmemory.o.d
+71 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/rijndael-128.o.d
+72 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/3-way.o.d
+73 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/blowfish-compat.o.d
+74 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/blowfish.o.d
+75 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/cast-128.o.d
+76 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/cast-256.o.d
+77 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/des.o.d
+78 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/enigma.o.d
+79 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/gost.o.d
+80 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/loki97.o.d
+81 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/rc2.o.d
+82 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/arcfour.o.d
+83 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/rijndael-192.o.d
+84 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/rijndael-256.o.d
+85 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/safer128.o.d
+86 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/safer64.o.d
+87 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/saferplus.o.d
+88 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/serpent.o.d
+89 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/tripledes.o.d
+90 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/twofish.o.d
+91 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/wake.o.d
+92 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/algorithms/xtea.o.d
+93 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/cbc.o.d
+94 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/cfb.o.d
+95 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/ctr.o.d
+96 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/ecb.o.d
+97 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/ncfb.o.d
+98 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/nofb.o.d
+99 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/ofb.o.d
+100 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/.deps/out/Debug/obj.target/mcrypt/modules/modes/stream.o.d
+101 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/aes_test
+102 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/cipher_test
+103 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/linker.lock
+104 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/aes_test/src/aes_test.o
+105 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/cipher_test/src/cipher_test.o
+106 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/libmcrypt.a
+107 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/bzero.o
+108 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/mcrypt.o
+109 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/mcrypt_extra.o
+110 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/mcrypt_modules.o
+111 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/mcrypt_symb.o
+112 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/mcrypt_threads.o
+113 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/win32_comp.o
+114 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/lib/xmemory.o
+115 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/rijndael-128.o
+116 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/3-way.o
+117 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/blowfish-compat.o
+118 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/blowfish.o
+119 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/cast-128.o
+120 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/cast-256.o
+121 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/des.o
+122 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/enigma.o
+123 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/gost.o
+124 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/loki97.o
+125 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/rc2.o
+126 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/arcfour.o
+127 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/rijndael-192.o
+128 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/rijndael-256.o
+129 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/safer128.o
+130 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/safer64.o
+131 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/saferplus.o
+132 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/serpent.o
+133 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/tripledes.o
+134 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/twofish.o
+135 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/wake.o
+136 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/algorithms/xtea.o
+137 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/cbc.o
+138 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/cfb.o
+139 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/ctr.o
+140 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/ecb.o
+141 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/ncfb.o
+142 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/nofb.o
+143 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/ofb.o
+144 silly gunzTarPerm extractEntry deps/libmcrypt/out/Debug/obj.target/mcrypt/modules/modes/stream.o
+145 silly gunzTarPerm extractEntry examples/rijndael.js
+146 silly gunzTarPerm extractEntry examples/rijndael.php
+147 silly gunzTarPerm extractEntry UNLICENSE
+148 silly gunzTarPerm extractEntry src/rijndael.cc
+149 silly gunzTarPerm extractEntry binding.gyp
+150 silly gunzTarPerm extractEntry test/rijndael.js
+151 silly gunzTarPerm extractEntry test/mocha.opts
+152 silly gunzTarPerm extractEntry test/test.php
+153 verbose write writing to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/package.json
+154 info preinstall node-rijndael@0.2.2
+155 verbose readDependencies loading dependencies from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/package.json
+156 silly prepareForInstallMany adding nan@~1.5.0 from node-rijndael dependencies
+157 verbose readDependencies loading dependencies from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/package.json
+158 silly cache add args [ 'nan@~1.5.0', null ]
+159 verbose cache add spec nan@~1.5.0
+160 silly cache add parsed spec { raw: 'nan@~1.5.0',
+160 silly cache add   scope: null,
+160 silly cache add   name: 'nan',
+160 silly cache add   rawSpec: '~1.5.0',
+160 silly cache add   spec: '>=1.5.0 <1.6.0',
+160 silly cache add   type: 'range' }
+161 silly addNamed nan@>=1.5.0 <1.6.0
+162 verbose addNamed ">=1.5.0 <1.6.0" is a valid semver range for nan
+163 silly addNameRange { name: 'nan', range: '>=1.5.0 <1.6.0', hasData: false }
+164 silly mapToRegistry name nan
+165 silly mapToRegistry using default registry
+166 silly mapToRegistry registry https://registry.npmjs.org/
+167 silly mapToRegistry uri https://registry.npmjs.org/nan
+168 verbose addNameRange registry:https://registry.npmjs.org/nan not in flight; fetching
+169 verbose request uri https://registry.npmjs.org/nan
+170 verbose request no auth needed
+171 info attempt registry request try #1 at 22:10:11
+172 verbose etag "CWMZR9BQ6YD6KL99MGG0CU5U5"
+173 http request GET https://registry.npmjs.org/nan
+174 http 304 https://registry.npmjs.org/nan
+175 silly get cb [ 304,
+175 silly get   { date: 'Tue, 14 Jul 2015 02:10:12 GMT',
+175 silly get     via: '1.1 varnish',
+175 silly get     'cache-control': 'max-age=60',
+175 silly get     etag: '"CWMZR9BQ6YD6KL99MGG0CU5U5"',
+175 silly get     age: '45',
+175 silly get     connection: 'keep-alive',
+175 silly get     'x-served-by': 'cache-ord1732-ORD',
+175 silly get     'x-cache': 'HIT',
+175 silly get     'x-cache-hits': '3',
+175 silly get     'x-timer': 'S1436839812.126531,VS0,VE0',
+175 silly get     vary: 'Accept' } ]
+176 verbose etag https://registry.npmjs.org/nan from cache
+177 verbose get saving nan to /Users/abdulkhan/.npm/registry.npmjs.org/nan/.cache.json
+178 silly addNameRange number 2 { name: 'nan', range: '>=1.5.0 <1.6.0', hasData: true }
+179 silly addNameRange versions [ 'nan',
+179 silly addNameRange   [ '0.3.0-wip',
+179 silly addNameRange     '0.3.0-wip2',
+179 silly addNameRange     '0.3.0',
+179 silly addNameRange     '0.3.1',
+179 silly addNameRange     '0.3.2',
+179 silly addNameRange     '0.4.0',
+179 silly addNameRange     '0.4.1',
+179 silly addNameRange     '0.4.2',
+179 silly addNameRange     '0.4.3',
+179 silly addNameRange     '0.4.4',
+179 silly addNameRange     '0.5.0',
+179 silly addNameRange     '0.5.1',
+179 silly addNameRange     '0.5.2',
+179 silly addNameRange     '0.6.0',
+179 silly addNameRange     '0.7.0',
+179 silly addNameRange     '0.7.1',
+179 silly addNameRange     '0.8.0',
+179 silly addNameRange     '1.0.0',
+179 silly addNameRange     '1.1.0',
+179 silly addNameRange     '1.1.1',
+179 silly addNameRange     '1.1.2',
+179 silly addNameRange     '1.2.0',
+179 silly addNameRange     '1.3.0',
+179 silly addNameRange     '1.4.0',
+179 silly addNameRange     '1.4.1',
+179 silly addNameRange     '1.5.0',
+179 silly addNameRange     '1.4.2',
+179 silly addNameRange     '1.4.3',
+179 silly addNameRange     '1.5.1',
+179 silly addNameRange     '1.5.2',
+179 silly addNameRange     '1.6.0',
+179 silly addNameRange     '1.5.3',
+179 silly addNameRange     '1.6.1',
+179 silly addNameRange     '1.6.2',
+179 silly addNameRange     '1.7.0',
+179 silly addNameRange     '1.8.0',
+179 silly addNameRange     '1.8.1',
+179 silly addNameRange     '1.8.2',
+179 silly addNameRange     '1.8.3',
+179 silly addNameRange     '1.8.4' ] ]
+180 silly addNamed nan@1.5.3
+181 verbose addNamed "1.5.3" is a plain semver version for nan
+182 silly cache afterAdd nan@1.5.3
+183 verbose afterAdd /Users/abdulkhan/.npm/nan/1.5.3/package/package.json not in flight; writing
+184 verbose afterAdd /Users/abdulkhan/.npm/nan/1.5.3/package/package.json written
+185 silly install resolved [ { name: 'nan',
+185 silly install resolved     version: '1.5.3',
+185 silly install resolved     description: 'Native Abstractions for Node.js: C++ header for Node 0.8->0.12 compatibility',
+185 silly install resolved     main: 'include_dirs.js',
+185 silly install resolved     repository: { type: 'git', url: 'git://github.com/rvagg/nan.git' },
+185 silly install resolved     scripts:
+185 silly install resolved      { test: 'tap --gc test/js/*-test.js',
+185 silly install resolved        'rebuild-tests': 'node-gyp rebuild --directory test' },
+185 silly install resolved     contributors:
+185 silly install resolved      [ [Object],
+185 silly install resolved        [Object],
+185 silly install resolved        [Object],
+185 silly install resolved        [Object],
+185 silly install resolved        [Object],
+185 silly install resolved        [Object],
+185 silly install resolved        [Object] ],
+185 silly install resolved     devDependencies:
+185 silly install resolved      { bindings: '~1.2.1',
+185 silly install resolved        'node-gyp': '~1.0.2',
+185 silly install resolved        tap: '~0.5.0',
+185 silly install resolved        xtend: '~4.0.0' },
+185 silly install resolved     license: 'MIT',
+185 silly install resolved     gitHead: '28ea7e1b769f790c69deaf141b47e4d41e176e8b',
+185 silly install resolved     bugs: { url: 'https://github.com/rvagg/nan/issues' },
+185 silly install resolved     homepage: 'https://github.com/rvagg/nan',
+185 silly install resolved     _id: 'nan@1.5.3',
+185 silly install resolved     _shasum: '4cd0ecc133b7b0700a492a646add427ae8a318eb',
+185 silly install resolved     _from: 'nan@>=1.5.0 <1.6.0',
+185 silly install resolved     _npmVersion: '2.1.18',
+185 silly install resolved     _nodeVersion: '1.0.3',
+185 silly install resolved     _npmUser: { name: 'rvagg', email: 'rod@vagg.org' },
+185 silly install resolved     maintainers: [ [Object], [Object] ],
+185 silly install resolved     dist:
+185 silly install resolved      { shasum: '4cd0ecc133b7b0700a492a646add427ae8a318eb',
+185 silly install resolved        tarball: 'http://registry.npmjs.org/nan/-/nan-1.5.3.tgz' },
+185 silly install resolved     directories: {},
+185 silly install resolved     _resolved: 'https://registry.npmjs.org/nan/-/nan-1.5.3.tgz',
+185 silly install resolved     readme: 'ERROR: No README data found!' } ]
+186 info install nan@1.5.3 into /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+187 info installOne nan@1.5.3
+188 verbose installOne of nan to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael not in flight; installing
+189 verbose lock using /Users/abdulkhan/.npm/_locks/nan-814e86b0157b86c1.lock for /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+190 silly install write writing nan 1.5.3 to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+191 verbose unbuild node_modules/node-rijndael/node_modules/nan
+192 silly gentlyRm /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan is being purged from base /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS
+193 verbose gentlyRm don't care about contents; nuking /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+194 verbose tar unpack /Users/abdulkhan/.npm/nan/1.5.3/package.tgz
+195 verbose tar unpacking to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+196 silly gentlyRm /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan is being purged
+197 verbose gentlyRm don't care about contents; nuking /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+198 silly gunzTarPerm modes [ '755', '644' ]
+199 silly gunzTarPerm extractEntry package.json
+200 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+201 silly gunzTarPerm extractEntry README.md
+202 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+203 silly gunzTarPerm extractEntry include_dirs.js
+204 silly gunzTarPerm extractEntry LICENSE.md
+205 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 420 ]
+206 silly gunzTarPerm extractEntry .dntrc
+207 silly gunzTarPerm modified mode [ '.dntrc', 436, 420 ]
+208 silly gunzTarPerm extractEntry appveyor.yml
+209 silly gunzTarPerm modified mode [ 'appveyor.yml', 436, 420 ]
+210 silly gunzTarPerm extractEntry nan.h
+211 silly gunzTarPerm modified mode [ 'nan.h', 436, 420 ]
+212 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
+213 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 420 ]
+214 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
+215 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 420 ]
+216 silly gunzTarPerm extractEntry nan_new.h
+217 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 420 ]
+218 silly gunzTarPerm extractEntry CHANGELOG.md
+219 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 420 ]
+220 verbose write writing to /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan/package.json
+221 info preinstall nan@1.5.3
+222 verbose readDependencies loading dependencies from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan/package.json
+223 verbose readDependencies loading dependencies from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan/package.json
+224 silly install resolved []
+225 verbose about to build /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+226 info build /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+227 info linkStuff nan@1.5.3
+228 silly linkStuff nan@1.5.3 has /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules as its parent node_modules
+229 verbose linkBins nan@1.5.3
+230 verbose linkMans nan@1.5.3
+231 verbose rebuildBundles nan@1.5.3
+232 info install nan@1.5.3
+233 info postinstall nan@1.5.3
+234 verbose unlock done using /Users/abdulkhan/.npm/_locks/nan-814e86b0157b86c1.lock for /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael/node_modules/nan
+235 verbose about to build /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+236 info build /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+237 info linkStuff node-rijndael@0.2.2
+238 silly linkStuff node-rijndael@0.2.2 has /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules as its parent node_modules
+239 verbose linkBins node-rijndael@0.2.2
+240 verbose linkMans node-rijndael@0.2.2
+241 verbose rebuildBundles node-rijndael@0.2.2
+242 verbose rebuildBundles [ 'nan' ]
+243 info install node-rijndael@0.2.2
+244 verbose unsafe-perm in lifecycle false
+245 info node-rijndael@0.2.2 Failed to exec install script
+246 verbose unlock done using /Users/abdulkhan/.npm/_locks/node-rijndael-5ea1a44ea4d3a22e.lock for /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+247 verbose stack Error: node-rijndael@0.2.2 install: `node-gyp rebuild`
+247 verbose stack Exit status 1
+247 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+247 verbose stack     at emitTwo (events.js:87:13)
+247 verbose stack     at EventEmitter.emit (events.js:172:7)
+247 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+247 verbose stack     at emitTwo (events.js:87:13)
+247 verbose stack     at ChildProcess.emit (events.js:172:7)
+247 verbose stack     at maybeClose (internal/child_process.js:764:16)
+247 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+248 verbose pkgid node-rijndael@0.2.2
+249 verbose cwd /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS
+250 error Darwin 14.4.0
+251 error argv "/usr/local/bin/iojs" "/usr/local/bin/npm" "install" "node-rijndael" "--save"
+252 error node v2.3.3
+253 error npm  v2.11.3
+254 error code ELIFECYCLE
+255 error node-rijndael@0.2.2 install: `node-gyp rebuild`
+255 error Exit status 1
+256 error Failed at the node-rijndael@0.2.2 install script 'node-gyp rebuild'.
+256 error This is most likely a problem with the node-rijndael package,
+256 error not with npm itself.
+256 error Tell the author that this fails on your system:
+256 error     node-gyp rebuild
+256 error You can get their info via:
+256 error     npm owner ls node-rijndael
+256 error There is likely additional logging output above.
+257 verbose exit [ 1, true ]
+258 verbose unbuild node_modules/node-rijndael
+259 info preuninstall node-rijndael@0.2.2
+260 info uninstall node-rijndael@0.2.2
+261 verbose unbuild rmStuff node-rijndael@0.2.2 from /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules
+262 info postuninstall node-rijndael@0.2.2
+263 silly gentlyRm /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael is being purged from base /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS
+264 verbose gentlyRm don't care about contents; nuking /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+265 silly vacuum-fs purging /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules/node-rijndael
+266 silly vacuum-fs quitting because other entries in /Users/abdulkhan/Development/github/Cross-platform-AES-encryption/NodeJS/node_modules

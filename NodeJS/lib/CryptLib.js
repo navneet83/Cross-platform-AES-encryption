@@ -16,29 +16,43 @@ var _crypto = require('crypto');
 
 var _crypto2 = _interopRequireDefault(_crypto);
 
-var algorithm = 'aes-256-gcm';
-
 var CryptLib = (function () {
-  function CryptLib(name, age) {
+  function CryptLib() {
     _classCallCheck(this, CryptLib);
 
-    this.name = name;
-    this.age = age;
+    this.algorithm = 'AES-256-CBC';
+    this.characterMatrixForRandomIVStringGeneration = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '_'];
   }
 
   _createClass(CryptLib, [{
     key: 'generateRandomIV',
-    value: function generateRandomIV(length) {}
+    value: function generateRandomIV(length) {
+      var _iv = [],
+          randomBytes = _crypto2['default'].randomBytes(length);
+
+      for (var i = 0; i < length; i++) {
+        var ptr = randomBytes[i] % this.characterMatrixForRandomIVStringGeneration.length;
+        _iv[i] = this.characterMatrixForRandomIVStringGeneration[ptr];
+      }
+      return _iv.join('');
+    }
   }, {
     key: 'getHashSha256',
-    value: function getHashSha256(key, length) {}
+    value: function getHashSha256(key, length) {
+      return _crypto2['default'].createHash('sha256').update(key).digest('hex').substring(0, length);
+    }
   }, {
     key: 'encrypt',
     value: function encrypt(plainText, key, initVector) {
-      var cipher = _crypto2['default'].createCipheriv(algorithm, key, new Buffer(initVector)),
-          encrypted = cipher.update(plainText, 'utf8', 'hex');
-      encrypted += cipher.final('hex');
-      console.log(encrypted);
+      initVector = new Buffer(initVector);
+      var encryptor = _crypto2['default'].createCipheriv(this.algorithm, key, initVector),
+          cipherText = undefined;
+      encryptor.setEncoding('base64');
+      encryptor.write(plainText);
+      encryptor.end();
+
+      cipherText = encryptor.read();
+      console.log('cipher text %s', cipherText);
     }
   }, {
     key: 'decrypt',
