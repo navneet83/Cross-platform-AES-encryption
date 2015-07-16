@@ -7,8 +7,10 @@ import crypto from 'crypto';
 export default class CryptLib {
 
   constructor() {
-    this.algorithm = 'AES-256-CBC';
-    this.characterMatrixForRandomIVStringGeneration = [
+    this._maxKeySize = 32;
+    this._maxIVSize = 16;
+    this._algorithm = 'AES-256-CBC';
+    this._characterMatrixForRandomIVStringGeneration = [
       'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
       'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 
       'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
@@ -22,8 +24,9 @@ export default class CryptLib {
         randomBytes = crypto.randomBytes(length);
 
     for (let i = 0; i < length; i++) {
-      let ptr = randomBytes[i] % this.characterMatrixForRandomIVStringGeneration.length;
-      _iv[i] = this.characterMatrixForRandomIVStringGeneration[ptr];
+      let ptr = randomBytes[i] % 
+        this._characterMatrixForRandomIVStringGeneration.length;
+      _iv[i] = this._characterMatrixForRandomIVStringGeneration[ptr];
     }
     return _iv.join('');
   }
@@ -36,8 +39,21 @@ export default class CryptLib {
   }
 
   encrypt(plainText, key, initVector) {
+    
+    let getFinalIV = () => {
+      let finalIV;
+      if (initVector > this._maxIVSize) {
+        return initVector.subString(0, this._maxIVSize - 1);
+      }
+    };
+
+    let getFinalKey = () => {
+
+    };
+    //let _pwd = 
+
     initVector = new Buffer(initVector);
-    let encryptor = crypto.createCipheriv(this.algorithm, key, initVector),
+    let encryptor = crypto.createCipheriv(this._algorithm, key, initVector),
         cipherText;
     encryptor.setEncoding('base64');
     encryptor.write(plainText);
@@ -47,7 +63,7 @@ export default class CryptLib {
     console.log('cipher text %s', cipherText);
   }
 
-  decrypt(_plainText, _key, _initVector) {
+  decrypt(plainText, key, initVector) {
     return this.name;
   }
 
