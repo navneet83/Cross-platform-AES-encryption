@@ -2,7 +2,8 @@
 
 var chai = require('chai'),
     expect = chai.expect,
-    CryptLib = require('../lib/CryptLib.js');
+    CryptLib = require('../lib/CryptLib.js'),
+    BufferList = require('bl');
 
 describe('developer tests', function() {
 
@@ -13,13 +14,28 @@ describe('developer tests', function() {
   });
 
   after(function() {
-    delete cryptLib;
+    cryptLib = null;
   });
 
   it('encrypt', function() {
+    var keyBuffer = new Buffer('b16920894899c7780b5fc7161560a412');
     cryptLib.encrypt('This is the text to be encrypted',
-      'b16920894899c7780b5fc7161560a412',
+      keyBuffer,
       'U10Y50GjNZ04wTvw');
+  });
+  
+  it.only('encrypt with 10bit IV', function() {
+    var iv = 'JHI1B',
+        hash = 'b16920894899c77',
+        clearText = 'This is the text to be encrypted',
+        cipherText, decryptedText;
+
+    cipherText = cryptLib.encrypt(clearText, hash, iv);
+
+    decryptedText = cryptLib.decrypt(cipherText, hash, iv);
+
+    expect(decryptedText).to.equal(clearText);
+
   });
 
   it('getHashSha256 should return 31 char long string', function() {
@@ -35,3 +51,4 @@ describe('developer tests', function() {
   });
 
 });
+

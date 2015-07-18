@@ -25,7 +25,9 @@
     "Encryption",
     "Decryption"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "bl": "^1.0.0"
+  },
   "devDependencies": {
     "babel": "^5.2.17",
     "chai": "^2.3.0",
