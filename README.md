@@ -1,6 +1,6 @@
 Cross platform 256bit AES encryption / decryption.
 ========
-This project contains the implementation of 256 bit AES encryption which works on all the platforms (C#, iOS, Android). One of the key objective is to make AES work on all the platforms with simple implementation. 
+This project contains the implementation of 256 bit AES encryption which works on all the platforms (C#, iOS, Android and Node.js). One of the key objective is to make AES work on all the platforms with simple implementation. 
 
 <b>Platforms Supported:</b>
 

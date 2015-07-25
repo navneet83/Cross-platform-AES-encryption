@@ -1,7 +1,12 @@
 CryptLib
 =========
 
-A module to encrypt/decrypt string between Node, iOS, Android and Windows platforms. 
+A module to encrypt/decrypt string in Node, written in ES6 (src folder) and transpiled using Babel to ES5(dist folder).
+
+Using companion framework libraries, you should be able to encrypt/decrypt between node, iOS, Android and Windows platforms.
+
+Companion libs can be found here: https://github.com/Pakhee/Cross-platform-AES-encryption
+
 
 ## Installation
 
@@ -9,12 +14,17 @@ A module to encrypt/decrypt string between Node, iOS, Android and Windows platfo
 
 ## Usage
 
-  var CryptLib = require('cryptlib'),
-  	  cl = new CryptLib();
+	var CryptLib = require('./dist/CryptLib.js'),
+		_crypt = new CryptLib(),
+		plainText = 'This is the text to be encrypted',
+		iv = _crypt.generateRandomIV(16), //16 bytes = 128 bit
+		key = _crypt.getHashSha256('my secret key', 32), //32 bytes = 256 bits
+		cypherText = _crypt.encrypt(plainText, key, iv),
+    originText = _crypt.decrypt(cypherText, key, iv);
 
-  var 
-
-  console.log('html', html, 'escaped', escaped, 'unescaped', unescaped);
+## Run Code Sample
+  
+  npm start
 
 ## Tests
 

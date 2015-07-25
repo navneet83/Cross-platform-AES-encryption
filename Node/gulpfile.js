@@ -5,7 +5,7 @@ var mocha = require('gulp-mocha');
 gulp.task('babel', function() {
   return gulp.src('src/*.js')
     .pipe(babel())
-    .pipe(gulp.dest('lib/'));
+    .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('watch', function() {

@@ -13,6 +13,7 @@
     }
   ],
   "scripts": {
+    "start": "node index.js",
     "test": "node node_modules/mocha/bin/mocha --reporter spec test/*"
   },
   "repository": {
@@ -27,8 +28,8 @@
   ],
   "dependencies": {
     "bl": "1.0.0",
-    "lodash.isarray": "^3.0.4",
-    "lodash.isfunction": "^3.0.6"
+    "lodash.isarray": "3.0.4",
+    "lodash.isfunction": "3.0.6"
   },
   "devDependencies": {
     "babel": "^5.2.17",
