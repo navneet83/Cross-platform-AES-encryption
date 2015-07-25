@@ -10,7 +10,11 @@
     {
       "name": "Abdul Khan",
       "email": "invalidred@gmail.com"
-    }
+    },
+    {
+      "name": "Alexey Novak",
+      "email": "alexey.novak.mail@gmail.com"
+    },
   ],
   "scripts": {
     "start": "node index.js",
