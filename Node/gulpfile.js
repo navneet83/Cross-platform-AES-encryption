@@ -9,7 +9,7 @@ gulp.task('babel', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('*.js', ['babel']);
+  gulp.watch('src/*.js', ['babel']);
 });
 
 gulp.task('test', ['babel'], function() {

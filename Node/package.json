@@ -1,11 +1,11 @@
 {
-  "name": "Cross-platform-AES-encryption",
-  "version": "0.0.1",
+  "name": "CryptLib",
+  "version": "0.1.0",
   "author": {
-    "name": "invalidred"
+    "name": "Abdul Khan"
   },
-  "main": "index.js",
-  "description": "Encrypt and Decrypt Stuff using AES-Encryption",
+  "main": "src/CryptLib.js",
+  "description": "CryptLib uses AES 256 for encryption or decryption. This library can be used for encryption and decryption of strings using Node on iOS, Android and Windows",
   "contributors": [
     {
       "name": "Abdul Khan",
@@ -26,7 +26,9 @@
     "Decryption"
   ],
   "dependencies": {
-    "bl": "^1.0.0"
+    "bl": "1.0.0",
+    "lodash.isarray": "^3.0.4",
+    "lodash.isfunction": "^3.0.6"
   },
   "devDependencies": {
     "babel": "^5.2.17",
@@ -43,27 +45,16 @@
   },
   "private": false,
   "license": "MIT",
-  "gitHead": "a4986e041db5b6e26019deb7e522d6fdcddcc59a",
-  "_id": "babel-npm-module-example@0.0.2",
-  "_shasum": "79e930a8a24f446ffcca99026577d43a660caf0f",
-  "_from": "babel-npm-module-example@*",
   "_npmVersion": "2.5.1",
   "_nodeVersion": "0.12.0",
   "_npmUser": {
     "name": "invalidred",
     "email": "invalidred@gmail.com"
   },
-  "dist": {
-    "shasum": "79e930a8a24f446ffcca99026577d43a660caf0f",
-    "tarball": "http://registry.npmjs.org/babel-npm-module-example/-/babel-npm-module-example-0.0.2.tgz"
-  },
   "maintainers": [
     {
-      "name": "invalidred",
+      "name": "Abdul Khan",
       "email": "invalidred@gmail.com"
     }
-  ],
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/babel-npm-module-example/-/babel-npm-module-example-0.0.2.tgz",
-  "readme": "ERROR: No README data found!"
+  ]
 }
