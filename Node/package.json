@@ -49,7 +49,7 @@
     "url": "https://github.com/Pakhee/Cross-platform-AES-encryption/issues"
   },
   "private": false,
-  "license": "MIT",
+  "license": "Apache",
   "_npmVersion": "2.5.1",
   "_nodeVersion": "0.12.0",
   "_npmUser": {
