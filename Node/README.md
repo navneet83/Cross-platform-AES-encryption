@@ -14,7 +14,7 @@ Companion libs can be found here: https://github.com/Pakhee/Cross-platform-AES-e
 
 ## Usage
 
-	var CryptLib = require('./dist/CryptLib.js'),
+	var CryptLib = require('cryptlib'),
 		_crypt = new CryptLib(),
 		plainText = 'This is the text to be encrypted',
 		iv = _crypt.generateRandomIV(16), //16 bytes = 128 bit

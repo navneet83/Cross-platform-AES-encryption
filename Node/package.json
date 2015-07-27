@@ -1,10 +1,10 @@
 {
-  "name": "CryptLib",
-  "version": "0.1.0",
+  "name": "cryptlib",
+  "version": "1.0.0",
   "author": {
     "name": "Abdul Khan"
   },
-  "main": "src/CryptLib.js",
+  "main": "dist/cryptLib.js",
   "description": "CryptLib uses AES 256 for encryption or decryption. This library can be used for encryption and decryption of strings using Node on iOS, Android and Windows",
   "contributors": [
     {
@@ -14,7 +14,7 @@
     {
       "name": "Alexey Novak",
       "email": "alexey.novak.mail@gmail.com"
-    },
+    }
   ],
   "scripts": {
     "start": "node index.js",

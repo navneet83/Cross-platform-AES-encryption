@@ -2,7 +2,7 @@
 
 var chai = require('chai'),
     expect = chai.expect,
-    CryptLib = require('../dist/CryptLib.js');
+    CryptLib = require('../dist/cryptLib.js');
 
 describe('CryptLib', function() {
   var cryptLib;
@@ -252,26 +252,6 @@ describe('CryptLib', function() {
       expect(nodeDecrpytedText).to.equal(cSharpPlainText);
     });
   });
-
-  // it('encrypt', function() {
-  //   var keyBuffer = new Buffer('b16920894899c7780b5fc7161560a412');
-  //   cryptLib.encrypt('This is the text to be encrypted',
-  //     keyBuffer,
-  //     'U10Y50GjNZ04wTvw');
-  // });
-  
-  // it('encrypt with 10bit IV', function() {
-  //   var iv = 'JHI1B',
-  //       hash = 'b16920894899c77',
-  //       clearText = 'This is the text to be encrypted',
-  //       cipherText, decryptedText;
-
-  //   cipherText = cryptLib.encrypt(clearText, hash, iv);
-
-  //   decryptedText = cryptLib.decrypt(cipherText, hash, iv);
-
-  //   expect(decryptedText).to.equal(clearText);
-  // });
 
 });
 
