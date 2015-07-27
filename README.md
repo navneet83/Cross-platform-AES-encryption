@@ -1,6 +1,6 @@
 Cross platform 256bit AES encryption / decryption.
 ========
-This project contains the implementation of 256 bit AES encryption which works on all the platforms (C#, iOS, Android). One of the key objective is to make AES work on all the platforms with simple implementation. 
+This project contains the implementation of 256 bit AES encryption which works on all the platforms (C#, iOS, Android and Node.js). One of the key objective is to make AES work on all the platforms with simple implementation. 
 
 <b>Platforms Supported:</b>
 
@@ -10,9 +10,11 @@ This project contains the implementation of 256 bit AES encryption which works o
 
 3. Windows (C#).
 
+4. Node.js
+
 <b>Features:</b>
 
-1. Cross platform support. Encryption-Decryption works across C#, iOS and Android. 
+1. Cross platform support. Encryption-Decryption works across C#, iOS, Android and Node.js. 
 
 2. Support for Random IV (initialization vector) for encryption and decryption. Randomization is crucial for encryption schemes to achieve semantic security, a property whereby repeated usage of the scheme under the same key does not allow an attacker to infer relationships between segments of the encrypted message.
 

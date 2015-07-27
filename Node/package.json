@@ -1,0 +1,65 @@
+{
+  "name": "cryptlib",
+  "version": "1.0.0",
+  "author": {
+    "name": "Abdul Khan"
+  },
+  "main": "dist/cryptLib.js",
+  "description": "CryptLib uses AES 256 for encryption or decryption. This library can be used for encryption and decryption of strings using Node on iOS, Android and Windows",
+  "contributors": [
+    {
+      "name": "Abdul Khan",
+      "email": "invalidred@gmail.com"
+    },
+    {
+      "name": "Alexey Novak",
+      "email": "alexey.novak.mail@gmail.com"
+    }
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "test": "node node_modules/mocha/bin/mocha --reporter spec test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:invalidred/Cross-platform-AES-encryption.git"
+  },
+  "keywords": [
+    "AES node",
+    "Cross Platform",
+    "Encryption",
+    "Decryption"
+  ],
+  "dependencies": {
+    "bl": "1.0.0",
+    "lodash.isarray": "3.0.4",
+    "lodash.isfunction": "3.0.6"
+  },
+  "devDependencies": {
+    "babel": "^5.2.17",
+    "chai": "^2.3.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-mocha": "^2.0.1",
+    "mocha": "^2.2.4"
+  },
+  "engine": "node >= 0.10.x",
+  "homepage": "https://github.com/invalidred/Cross-platform-AES-encryption",
+  "bugs": {
+    "url": "https://github.com/Pakhee/Cross-platform-AES-encryption/issues"
+  },
+  "private": false,
+  "license": "MIT",
+  "_npmVersion": "2.5.1",
+  "_nodeVersion": "0.12.0",
+  "_npmUser": {
+    "name": "invalidred",
+    "email": "invalidred@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "Abdul Khan",
+      "email": "invalidred@gmail.com"
+    }
+  ]
+}
