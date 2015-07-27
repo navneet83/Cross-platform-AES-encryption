@@ -9,7 +9,7 @@ import isArray from 'lodash.isarray';
 /**
  * CrossPlatform CryptLib
    * This cross platform CryptLib uses AES 256 for encryption. This library can
-   * be used for encryptoion and de-cryption of string on iOS, Android, Windows
+   * be used for encryption and de-cryption of strings on iOS, Android, Windows
    * and Node platform.
    * Features:
    * 1. 256 bit AES encryption

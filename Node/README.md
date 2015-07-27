@@ -20,7 +20,7 @@ Companion libs can be found here: https://github.com/Pakhee/Cross-platform-AES-e
 		iv = _crypt.generateRandomIV(16), //16 bytes = 128 bit
 		key = _crypt.getHashSha256('my secret key', 32), //32 bytes = 256 bits
 		cypherText = _crypt.encrypt(plainText, key, iv),
-    originText = _crypt.decrypt(cypherText, key, iv);
+        originalText = _crypt.decrypt(cypherText, key, iv);
 
 ## Run Code Sample
   
@@ -41,6 +41,6 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## License
 
-MIT license; see [LICENSE](./LICENSE).
+Apache License; see [LICENSE](../LICENSE).
 
 (c) 2015 by Abdul Khan
