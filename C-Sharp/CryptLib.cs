@@ -22,7 +22,7 @@ namespace com.pakhee.common
 	 *****************************************************************/
 	public class CryptLib
 	{
-		UTF8Encoding _enc;
+		UTF8Encoding _enc = new UTF8Encoding(true, true);
 		RijndaelManaged _rcipher;
 		byte[] _key, _pwd, _ivBytes, _iv;
 		
@@ -117,13 +117,16 @@ namespace com.pakhee.common
 
 			if (_mode.Equals (EncryptMode.ENCRYPT)) {
 				//encrypt
-				byte[] plainText = _rcipher.CreateEncryptor().TransformFinalBlock(_enc.GetBytes(_inputText) , 0, _inputText.Length);
+
+                byte[] plainText = _rcipher.CreateEncryptor().TransformFinalBlock(_enc.GetBytes(_inputText), 0, _enc.GetBytes(_inputText).Length);
 				_out = Convert.ToBase64String(plainText);
+
 			}
 			if (_mode.Equals (EncryptMode.DECRYPT)) {
 				//decrypt
 				byte[] plainText = _rcipher.CreateDecryptor().TransformFinalBlock(Convert.FromBase64String(_inputText), 0, Convert.FromBase64String(_inputText).Length);
 				_out = _enc.GetString(plainText);
+
 			}
 			_rcipher.Dispose();
 			return _out;// return encrypted/decrypted string
