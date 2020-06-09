@@ -33,4 +33,4 @@ See code samples for more details. You'll have to perform following steps:
 See code samples for more details. You'll have to perform following steps:
 
 1. Get the encrypted text and the randomIV used for encryption
-2. Decrypt the strying using the provided decrypt function !
+2. Decrypt the string using the provided decrypt function !
