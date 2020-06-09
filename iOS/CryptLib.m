@@ -1,62 +1,42 @@
-	/*****************************************************************
-	 * CrossPlatform CryptLib
-	 * 
-	 * <p>
-	 * This cross platform CryptLib uses AES 256 for encryption. This library can
-	 * be used for encryptoion and de-cryption of string on iOS, Android and Windows
-	 * platform.<br/>
-	 * Features: <br/>
-	 * 1. 256 bit AES encryption
-	 * 2. Random IV generation. 
-	 * 3. Provision for SHA256 hashing of key. 
-	 * </p>
-	 * 
-	 * @since 1.0
-	 * @author navneet
-	 *****************************************************************/
-// How to use :
-// //  1. Encryption:
-
-// NSString * _secret = @"This the sample text has to be encrypted"; // this is the text that you want to encrypt.
-
-// NSString * _key = @"shared secret"; //secret key for encryption. To make encryption stronger, we will not use this key directly. We'll first hash the key next step and then use it.
-
-// key = [[StringEncryption alloc] sha256:key length:32]; //this is very important, 32 bytes = 256 bit
-
-// NSString * iv =   [[[[StringEncryption alloc] generateRandomIV:11]  base64EncodingWithLineLength:0] substringToIndex:16]; //Here we are generating random initialization vector (iv). Length of this vector = 16 bytes = 128 bits
-
-// Now that we have input text, hashed key and random IV, we are all set for encryption:
-// NSData * encryptedData = [[StringEncryption alloc] encrypt:[secret dataUsingEncoding:NSUTF8StringEncoding] key:key iv:iv];
-
-// NSLog(@"encrypted data:: %@", [encryptedData  base64EncodingWithLineLength:0]); //print the encrypted text
-// Encryption = [plainText + secretKey + randomIV] = Cyphertext
-
-// // 2. Decryption
-// for decryption, you will have to use the same IV and key which was used for encryption.
-
-// encryptedData = [[StringEncryption alloc] decrypt:encryptedData  key:key iv:iv];
-// NSString * decryptedText = [[NSString alloc] initWithData:encryptedData encoding:NSUTF8StringEncoding];
-// NSLog(@"decrypted data:: %@", decryptedText); //print the decrypted text
-
-// For base64EncodingWithLineLength refer - https://github.com/jdg/MGTwitterEngine/blob/master/NSData%2BBase64.m
-
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 Kavin Varnan
+ 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
 #import "CryptLib.h"
-#import "NSData+Base64.h"
 
 
-@implementation StringEncryption
+@implementation CryptLib
 
 - (NSData *)encrypt:(NSData *)plainText key:(NSString *)key  iv:(NSString *)iv {
     char keyPointer[kCCKeySizeAES256+2],// room for terminator (unused) ref: https://devforums.apple.com/message/876053#876053
     ivPointer[kCCBlockSizeAES128+2];
     BOOL patchNeeded;
     bzero(keyPointer, sizeof(keyPointer)); // fill with zeroes for padding
-    //key = [[StringEncryption alloc] md5:key];
+    
     patchNeeded= ([key length] > kCCKeySizeAES256+1);
     if(patchNeeded)
     {
-        NSLog(@"Key length is longer %lu", (unsigned long)[[[StringEncryption alloc] md5:key] length]);
+        NSLog(@"Key length is longer %lu", (unsigned long)[[self md5:key] length]);
         key = [key substringToIndex:kCCKeySizeAES256]; // Ensure that the key isn't longer than what's needed (kCCKeySizeAES256)
     }
     
@@ -100,17 +80,17 @@
     char keyPointer[kCCKeySizeAES256+2],// room for terminator (unused) ref: https://devforums.apple.com/message/876053#876053
     ivPointer[kCCBlockSizeAES128+2];
     BOOL patchNeeded;
-  
+    
     patchNeeded = ([key length] > kCCKeySizeAES256+1);
     if(patchNeeded)
     {
-        NSLog(@"Key length is longer %lu", (unsigned long)[[[StringEncryption alloc] md5:key] length]);
+        NSLog(@"Key length is longer %lu", (unsigned long)[[self md5:key] length]);
         key = [key substringToIndex:kCCKeySizeAES256]; // Ensure that the key isn't longer than what's needed (kCCKeySizeAES256)
     }
-
+    
     [key getCString:keyPointer maxLength:sizeof(keyPointer) encoding:NSUTF8StringEncoding];
     [iv getCString:ivPointer maxLength:sizeof(ivPointer) encoding:NSUTF8StringEncoding];
-
+    
     if (patchNeeded) {
         keyPointer[0] = '\0';  // Previous iOS version than iOS7 set the first char to '\0' if the key was longer than kCCKeySizeAES256
     }
@@ -143,12 +123,34 @@
     return nil;
 }
 
+- (NSString *) encryptPlainText:(NSString *)plainText key:(NSString *)key iv:(NSString *)iv {
+    return [[[[CryptLib alloc] init] encrypt:[plainText dataUsingEncoding:NSUTF8StringEncoding] key:[[CryptLib alloc] sha256:key length:32] iv:iv] base64EncodedStringWithOptions:0];
+}
+
+- (NSString *) decryptCipherText:(NSString *)ciperText key:(NSString *)key iv:(NSString *)iv {
+    return [[NSString alloc] initWithData:[[CryptLib alloc] decrypt:[[NSData alloc] initWithBase64EncodedString:ciperText options:NSDataBase64DecodingIgnoreUnknownCharacters] key:[[CryptLib alloc] sha256:key length:32] iv:[[CryptLib alloc] generateRandomIV16]] encoding:NSUTF8StringEncoding];
+}
+
+- (NSString *) encryptPlainTextRandomIVWithPlainText:(NSString *)plainText key:(NSString *)key {
+    CryptLib *crypt = [CryptLib alloc];
+    NSString *plain = [crypt generateRandomIV16];
+    plain = [plain stringByAppendingString:plainText];
+    return [[[crypt init] encrypt:[plain dataUsingEncoding:NSUTF8StringEncoding] key:[crypt sha256:key length:32] iv:[crypt generateRandomIV16]] base64EncodedStringWithOptions:0];
+}
+
+- (NSString *) decryptCipherTextRandomIVWithCipherText:(NSString *)cipherText key:(NSString *)key {
+    CryptLib *crypt = [CryptLib alloc];
+    NSString *plain = [[NSString alloc] initWithData:[crypt decrypt:[[NSData alloc] initWithBase64EncodedString:cipherText options:NSDataBase64DecodingIgnoreUnknownCharacters] key:[crypt sha256:key length:32] iv:[crypt generateRandomIV16]] encoding:NSUTF8StringEncoding];
+    return [plain substringFromIndex:16];
+}
+
+
 //this function is no longer used in encryption / decryption
-- (NSString *) md5:(NSString *) input
+- (NSString *)md5:(NSString *) input
 {
     const char *cStr = [input UTF8String];
     unsigned char digest[16];
-    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+    CC_MD5( cStr, (uint32_t)strlen(cStr), digest ); // This is the md5 call
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     
@@ -159,35 +161,57 @@
     
 }
 
-//function to generate random string of given length. 
-//random strings are used as IV
-- (NSData *)generateRandomIV:(size_t)length
-{
+- (NSString*)generateRandomIV:(size_t)length {
+    
+    // Since the length of Base64 hash is = (3/4) x (length of input string) we can work out input length required to
+    // generate 32byte hash is 24 bytes long. Note: Base64 may pad end with one, two or no '=' chars if not divisible.
+    // Therefore we don't care the generated string will be too long, just trim it down before returning.
+    
     NSMutableData *data = [NSMutableData dataWithLength:length];
     
-    int output = SecRandomCopyBytes(kSecRandomDefault,
-                                    length,
-                                    data.mutableBytes);
-    NSAssert(output == 0, @"error generating random bytes: %d",
-             errno);
+    int result = SecRandomCopyBytes(NULL, length, data.mutableBytes);
     
-    return data;
+    NSAssert(result == 0, @"Error generating random bytes: %d", errno);
+    
+    NSString *base64EncodedData = [[data base64EncodedStringWithOptions:0] substringToIndex:length];
+    
+    return base64EncodedData;
 }
 
-    /**
-	 * This function computes the SHA256 hash of input string
-	 * @param text input text whose SHA256 hash has to be computed
-	 * @param length length of the text to be returned
-	 * @return returns SHA256 hash of input text 
-	 */
+- (NSString*)generateRandomIV16 {
+    
+    // Since the length of Base64 hash is = (3/4) x (length of input string) we can work out input length required to
+    // generate 32byte hash is 24 bytes long. Note: Base64 may pad end with one, two or no '=' chars if not divisible.
+    // Therefore we don't care the generated string will be too long, just trim it down before returning.
+    
+    NSMutableData *data = [NSMutableData dataWithLength:16];
+    
+    int result = SecRandomCopyBytes(NULL, 16, data.mutableBytes);
+    
+    NSAssert(result == 0, @"Error generating random bytes: %d", errno);
+    
+    NSString *base64EncodedData = [[data base64EncodedStringWithOptions:0] substringToIndex:16];
+    
+    return base64EncodedData;
+}
+
+/**
+ * This function computes the SHA256 hash of input string
+ * @param key input text whose SHA256 hash has to be computed
+ * @param length length of the text to be returned
+ * @return returns SHA256 hash of input text
+ */
 - (NSString*) sha256:(NSString *)key length:(NSInteger) length{
     const char *s=[key cStringUsingEncoding:NSASCIIStringEncoding];
     NSData *keyData=[NSData dataWithBytes:s length:strlen(s)];
     
     uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(keyData.bytes, keyData.length, digest);
-    NSData *out=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
-    NSString *hash=[out description];
+    CC_SHA256(keyData.bytes, (CC_LONG)keyData.length, digest);
+    NSData *out = [NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
+    
+    // NSString *hash = [out debugDescription]; // This works but we won't rely on this due to the undocumented behaviour of description and debufDescription.
+    NSString *hash = [self hex:out];
+    
     hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
     hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
@@ -200,6 +224,27 @@
     {
         return [hash substringToIndex:length];
     }
- }
+}
+
+#pragma mark - String Conversion
+
+/// Convert NSData to Hex.
+/// Reference: @Abdu's answer from https://stackoverflow.com/questions/58098958/aes-encryption-cryptlib-in-ios-13-not-working
+-(NSString*)hex:(NSData*)data{
+    NSMutableData *result = [NSMutableData dataWithLength:2*data.length];
+    unsigned const char* src = data.bytes;
+    unsigned char* dst = result.mutableBytes;
+    unsigned char t0, t1;
+    
+    for (int i = 0; i < data.length; i ++ ) {
+        t0 = src[i] >> 4;
+        t1 = src[i] & 0x0F;
+        
+        dst[i*2] = 48 + t0 + (t0 / 10) * 39;
+        dst[i*2+1] = 48 + t1 + (t1 / 10) * 39;
+    }
+    
+    return [[NSString alloc] initWithData:result encoding:NSASCIIStringEncoding];
+}
 
 @end
