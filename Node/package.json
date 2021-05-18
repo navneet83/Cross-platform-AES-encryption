@@ -31,7 +31,7 @@
     "Decryption"
   ],
   "dependencies": {
-    "bl": "4.0.0",
+    "bl": "4.0.3",
     "lodash.isarray": "3.0.4",
     "lodash.isfunction": "3.0.6"
   },
