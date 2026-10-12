@@ -1,3 +1,19 @@
+> **This repository is archived and should not be used.**
+>
+> It was written in 2014 to make AES-encrypted data readable across C#, iOS, Android and Node.js at a time when those platforms had no common authenticated-encryption API. It was archived in 2026 after a security assessment: it implements AES-256-CBC with no message authentication, a key derived by truncating an unsalted SHA-256 hex digest, and an IV that is managed by the caller. In 2026 terms that means ciphertexts can be altered or recovered via padding-oracle attacks, passwords can be brute-forced offline at hash speed, and the iOS version has memory-safety bugs and a hex conversion that has been broken since iOS 13 (#60). Issue #61 (2019) describes the missing authentication; it was never fixed.
+>
+> Do not copy this code into a new project. Use your platform's standard AEAD and password-derivation APIs instead:
+>
+> - iOS/macOS: CryptoKit `AES.GCM`, PBKDF2 via `CCKeyDerivationPBKDF` or Argon2id
+> - Android: Tink or `AES/GCM/NoPadding` with `GCMParameterSpec`, keys in Jetpack Security / Keystore
+> - .NET: `System.Security.Cryptography.AesGcm`, `Rfc2898DeriveBytes.Pbkdf2`
+> - Node/browser: WebCrypto `subtle.encrypt({ name: "AES-GCM" })` with `deriveKey(PBKDF2)`
+> - Across languages, use a standard envelope rather than a new one: JWE (`A256GCM` with `PBES2`), age for files, or libsodium `crypto_secretbox`
+>
+> If you still hold data encrypted with this library, decrypt it once with the matching old code and re-encrypt with one of the above. On iOS 13 and later the key helper in this repository no longer produces the same hex string as before; to derive the old key, format the SHA-256 digest bytes with `%02x` yourself (see #60). Open issues and pull requests are closed; nothing further will be merged.
+>
+> Navneet
+
 Cross platform 256bit AES encryption / decryption.
 ========
 This project contains the implementation of 256 bit AES encryption which works on all the platforms (C#, iOS, Android and Node.js). One of the key objective is to make AES work on all the platforms with simple implementation. 
