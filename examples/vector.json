@@ -1,0 +1,8 @@
+{
+  "note": "Shared test vector for all examples. The salt and nonce are fixed only to make the output reproducible; real encryptions use random ones.",
+  "password": "correct horse battery staple",
+  "salt_hex": "000102030405060708090a0b0c0d0e0f",
+  "nonce_hex": "101112131415161718191a1b",
+  "plaintext": "The quick brown fox jumps over the lazy dog",
+  "output_base64": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaG1h6GOVhisEUoJr7uqOEGtp3V+LE7BK727AQdJyty2Cb9qavhZWbjwyoeMQ8aKUEqtkaxPWk4NknIiFb"
+}

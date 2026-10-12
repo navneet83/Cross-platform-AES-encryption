@@ -10,6 +10,8 @@
 > - Node/browser: WebCrypto `subtle.encrypt({ name: "AES-GCM" })` with `deriveKey(PBKDF2)`
 > - Across languages, use a standard envelope rather than a new one: JWE (`A256GCM` with `PBES2`), age for files, or libsodium `crypto_secretbox`
 >
+> Working examples of the right way to do this on each platform, verified against one shared test vector, are in [`examples/`](examples/).
+>
 > If you still hold data encrypted with this library, decrypt it once with the matching old code and re-encrypt with one of the above. On iOS 13 and later the key helper in this repository no longer produces the same hex string as before; to derive the old key, format the SHA-256 digest bytes with `%02x` yourself (see #60). Open issues and pull requests are closed; nothing further will be merged.
 >
 > Navneet
